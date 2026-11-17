@@ -1,0 +1,234 @@
+body {
+   font-family:'Poppins', sans-serif;
+    background:#f5f7f5;
+    color:#222;
+    line-height:1.6;
+    
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #1f1f1f;
+    font-size: 17px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #1f8b24;
+}
+
+h1 {
+    align-items: center;
+}
+
+.membership-section{
+    width: 80%;
+    margin: 30px auto;
+    display: flex;
+    gap: 20px;
+}
+
+
+.membership-card{
+    flex: 1;
+    background: #008000;
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    min-height: 180px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.card-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.plan-badge{
+    background: rgba(255,255,255,0.25);
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+}
+
+.name{
+    font-size: 38px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.student-id{
+    font-size: 16px;
+    margin-bottom: 45px;
+}
+
+.card-bottom{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.status-list{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.status-row{
+    background: white;
+    padding: 14px 18px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #e5e5e5;
+}
+
+.label{
+    color: #666;
+    font-size: 15px;
+}
+
+.value{
+    font-weight: bold;
+    color: #333;
+}
+
+.badge-green{
+    background: #d4edda;
+    color: #155724;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.stat-box {
+    background: #f8f9fa;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+}
+
+.stat-box .number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: darkgreen;
+}
+
+.stat-box .desc {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 4px;
+}
+
+.card {
+    width: 80%;
+    max-width: 900px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.card h3 {
+    color: green;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+
+.card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+.card li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    background: #fafafa;
+}
+
+
+.book-info {
+    line-height: 1.5;
+}
+
+.book-title {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.book-author {
+    color: #666;
+    font-size: 14px;
+}
+
+.book-due {
+    color: #888;
+    font-size: 14px;
+}
+
+
+.status {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.due-soon {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.on-time {
+    background: #d4edda;
+    color: #155724;
+}
+.renew-btn {
+
+          margin-bottom: 40px;
+
+            display: inline-block;
+            background: darkgreen;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            font-family: 'Trebuchet MS', Arial, sans-serif;
+        }
+.renew-btn:hover { background: #145214; }
+footer{
+    background:#145717;
+    color:white;
+    text-align:center;
+    padding:25px;
+    font-size:15px;
+}

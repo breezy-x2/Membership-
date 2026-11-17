@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+   <head>
+    <title>register</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/registration.css">
+   </head>
+   <body> 
+
+    <div class="page-header">
+  <h1>Create Your Membership</h1>
+  <p>Follow the steps below to register and get your digital library card.</p>
+   </div>
+
+<div class="progress-bar">
+  <div class="steps-track">
+    <div class="step-item active" id="si-1">
+      <div class="step-circle">1</div>
+      <div class="step-label">Verify Student</div>
+    </div>
+    <div class="step-item" id="si-2">
+      <div class="step-circle">2</div>
+      <div class="step-label">Choose a Plan</div>
+    </div>
+    <div class="step-item" id="si-3">
+      <div class="step-circle">3</div>
+      <div class="step-label">Activate Membership</div>
+    </div>
+    <div class="step-item" id="si-4">
+      <div class="step-circle">4</div>
+      <div class="step-label">Get Your Card</div>
+    </div>
+  </div>
+</div>
+   <a href="Membership.html" class="home-btn">
+            ← Back to Home 
+    </a>
+<form action="save_membership.php" method="POST">
+
+<!-- STEP 1 -->
+<div class="registration-form" id="step1">
+
+    <h2>Step 1 — Verify Student ID</h2>
+
+    <label>Student ID *</label>
+    <input type="text" id="studentIdCheck" placeholder="STU-2024-00712">
+
+    <button type="button" id="verifyStudent">
+        Verify Student
+    </button>
+
+    <input type="hidden" name="student_id" id="student_id">
+    <input type="hidden" name="plan" id="plan">
+
+  <div id="studentDetails" style="display:none; margin-top:20px;">
+    <h3 id="studentFoundHeading">Student Found ✓</h3>
+
+    <p><strong>Name:</strong> <span id="foundName"></span></p>
+    <p><strong>Course:</strong> <span id="foundCourse"></span></p>
+    <p><strong>Year:</strong> <span id="foundYear"></span></p>
+
+    <button type="button" id="next1">Next: Choose Plan</button>
+</div>
+</div>
+
+<!-- STEP 2 -->
+<div class="membership-section" id="step2" style="display:none;">
+
+    <h2>Step 2 — Choose a Plan</h2>
+
+    <div class="plan">
+        <input type="radio" name="plan" value="basic">
+   <strong>Basic - R150 </strong>
+         <P>
+            Perfect for students who need standard library access. Borrow books, access study spaces, and use basic digital library resources throughout the academic year.
+        </P>
+    </div>
+
+    <div class="plan">
+        <input type="radio" name="plan" value="gold">
+  <strong> Gold - R450</strong>
+  <p>
+    Ideal for active library users. Includes all Basic benefits plus extended borrowing periods, higher borrowing limits, and priority book reservations.
+  </p>
+    </div>
+
+    <div class="plan">
+        <input type="radio" name="plan" value="platinum">
+<strong> Platinum - R750 </strong>
+<p>Our premium membership package. Enjoy all Gold benefits, maximum borrowing limits, priority access to new arrivals, and exclusive access to premium digital resources and academic databases.
+    
+</p>
+    </div>
+
+    <button type="button" id="next2">Activate Membership</button>
+
+</div>
+
+<!-- STEP 3 -->
+<div class="registration-form" id="step3" style="display:none;">
+
+    <h2>Step 3 — Confirm Membership</h2>
+
+    <div class="summary">
+    <p><strong>Name:</strong> <span id="confirmName"></span></p>
+    <p><strong>Plan:</strong> <span id="selectedPlan">Gold</span></p>
+    <p><strong>Status:</strong> <span id="statusText">Pending Activation</span></p>
+    </div>
+
+    <button type="button" id="activateBtn">
+        Activate Membership
+    </button>
+
+</div>
+
+<!-- STEP 4 -->
+<div class="registration-form" id="step4" style="display:none;">
+
+    <h2>Step 4 — Your Membership is Active!</h2>
+
+    <div class="membership-card">
+
+        <h3 id="cardName">Your Name</h3>
+        <p id="cardId">STU-0000-00000</p>
+        <p id="cardStudy">Study Field</p>
+        <p id="cardPlan">Gold Member</p>
+
+    </div>
+
+    <button type="submit">Save Membership</button>
+
+</div>
+
+<!-- HIDDEN INPUTS (ALL CLEAN) -->
+<input type="hidden" name="full_name" id="full_name">
+<input type="hidden" name="course" id="course">
+<input type="hidden" name="year_level" id="year_level">
+<input type="hidden" name="email" id="email">
+
+</form>
+<script>
+let savedStudentId = "";
+let savedPlan = "";
+let savedName = "";
+let savedCourse = "";
+let savedYear = "";
+let savedEmail = "";
+
+function updateProgress(step) {
+    const totalSteps = 4;
+    for (let i = 1; i <= totalSteps; i++) {
+        let el = document.getElementById("si-" + i);
+        if (el) el.classList.remove("active");
+    }
+    for (let i = 1; i <= step; i++) {
+        let el = document.getElementById("si-" + i);
+        if (el) el.classList.add("active");
+    }
+}
+
+window.onload = function () {
+    document.getElementById("step1").style.display = "block";
+    document.getElementById("step2").style.display = "none";
+    document.getElementById("step3").style.display = "none";
+    document.getElementById("step4").style.display = "none";
+
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("renew") === "true") {
+        document.getElementById("step1").style.display = "none";
+        document.getElementById("step2").style.display = "block";
+        updateProgress(2);
+    }
+};
+
+
+/* STEP 1: Verify Student (real database check) */
+document.getElementById("verifyStudent").onclick = function () {
+    let studentId = document.getElementById("studentIdCheck").value.trim();
+
+    if (studentId === "") {
+        alert("Please enter Student ID");
+        return;
+    }
+
+    fetch("check_student.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: "student_number=" + encodeURIComponent(studentId)
+    })
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        if (data.found) {
+            savedStudentId = studentId;
+            savedName = data.full_name;
+            savedCourse = data.course;
+            savedYear = data.year_level;
+            savedEmail = data.email;
+
+            document.getElementById("foundName").textContent = savedName;
+            document.getElementById("foundCourse").textContent = savedCourse;
+            document.getElementById("foundYear").textContent = savedYear;
+            document.getElementById("studentDetails").style.display = "block";
+
+        } else {
+            alert("Student not found. Please check your Student ID.");
+        }
+    })
+    .catch(function (error) {
+        alert("Something went wrong checking the student. Try again.");
+        console.error(error);
+    });
+};
+
+/* STEP 1 -> STEP 2 */
+document.getElementById("next1").onclick = function () {
+    document.getElementById("step1").style.display = "none";
+    document.getElementById("step2").style.display = "block";
+    updateProgress(2);
+};
+
+
+/* STEP 2 -> STEP 3 */
+document.getElementById("next2").onclick = function () {
+    let selected = document.querySelector('input[name="plan"]:checked');
+
+    if (!selected) {
+        alert("Please select a plan");
+        return;
+    }
+
+    savedPlan = selected.value;
+
+    document.getElementById("step2").style.display = "none";
+    document.getElementById("step3").style.display = "block";
+    document.getElementById("selectedPlan").textContent = selected.value;
+    document.getElementById("confirmName").textContent = savedName;
+
+    updateProgress(3);
+};
+
+/* STEP 3 -> STEP 4 */
+document.getElementById("activateBtn").onclick = function () {
+    document.getElementById("statusText").textContent = "Active ✔";
+
+    document.getElementById("step3").style.display = "none";
+    document.getElementById("step4").style.display = "block";
+
+    updateProgress(4);
+
+    document.getElementById("cardName").textContent = savedName;
+    document.getElementById("cardId").textContent = savedStudentId;
+    document.getElementById("cardStudy").textContent = savedCourse;
+    document.getElementById("cardPlan").textContent = savedPlan;
+};
+
+/* SAFETY NET: fill hidden inputs right before the form actually submits */
+document.querySelector("form").addEventListener("submit", function (e) {
+    if (savedStudentId === "" || savedPlan === "") {
+        alert("Please complete all steps before saving.");
+        e.preventDefault();
+        return;
+    }
+
+    document.getElementById("student_id").value = savedStudentId;
+    document.getElementById("plan").value = savedPlan;
+    document.getElementById("full_name").value = savedName;
+    document.getElementById("course").value = savedCourse;
+    document.getElementById("year_level").value = savedYear;
+    document.getElementById("email").value = savedEmail;
+});
+
+   </script>
+<footer>
+         © 2026 Greenview System · All rights reserved
+</footer>
+   </body>
+</html>

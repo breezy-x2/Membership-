@@ -1,0 +1,256 @@
+body{
+    font-family:'Poppins', sans-serif;
+    background:#f5f7f5;
+    color:#222;
+    line-height:1.6;
+}
+.page-header{
+    
+    padding: 70px;
+    background: #008000;
+    color: white;
+}
+  .progress-bar {
+      background: white;
+      border-bottom: 1px solid #ddd;
+      padding: 20px;
+    }
+    .steps-track {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .step-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      position: relative;
+    }
+    .step-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 18px;
+      left: 60%;
+      width: 80%;
+      height: 2px;
+      background: #ccc;
+      z-index: 0;
+    }
+    .step-item.done:not(:last-child)::after  { background: darkgreen; }
+    .step-circle {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: #ccc; color: white;
+      font-weight: bold; font-size: 0.95rem;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; z-index: 1;
+      transition: background 0.3s;
+    }
+    .step-item.active .step-circle  { background: darkgreen; }
+    .step-item.done   .step-circle  { background: darkgreen; }
+    .step-label {
+      font-size: 0.72rem; color: #888;
+      margin-top: 6px; text-align: center;
+    }
+.registration-form{
+    width: 90%;
+    max-width: 600px;
+
+    margin: 60px auto;
+    padding: 40px;
+
+    background: white;
+    border-radius: 15px;
+
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.registration-form h2{
+    text-align: center;
+    color: darkgreen;
+    margin-bottom: 10px;
+}
+
+.registration-form p{
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.registration-form form{
+    display: flex;
+    flex-direction: column;
+}
+
+.registration-form label{
+    margin-bottom: 8px;
+    margin-top: 15px;
+
+    font-weight: 600;
+    color: #222;
+}
+
+.registration-form input,
+.registration-form select{
+    padding: 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    outline: none;
+    transition: 0.3s;
+}
+
+.registration-form input:focus,
+.registration-form select:focus{
+    border-color: darkgreen;
+    box-shadow: 0 0 5px rgba(0,100,0,0.2);
+}
+
+.registration-form button{
+    margin-top: 30px;
+
+    padding: 15px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: darkgreen;
+    color: white;
+
+    font-size: 17px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.registration-form button:hover{
+    background: green;
+}
+
+
+.membership-section{
+    width: 80%;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.membership-section h2{
+    color: darkgreen;
+    margin-bottom: 10px;
+}
+
+.membership-section p{
+    color: #555;
+}
+
+.plan{
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+
+    padding: 20px;
+    margin-top: 20px;
+
+    text-align: left;
+}
+
+.plan h3{
+    color: darkgreen;
+    margin-top: 10px;
+}
+
+.plan ul{
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.plan li{
+    margin-bottom: 8px;
+}
+
+.plan input{
+    transform: scale(1.2);
+}
+.verify-box {
+    text-align: center;
+}
+
+.verify-box input {
+    width: 250px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.verify-box button {
+    padding: 10px 20px;
+    background-color: darkgreen;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.verify-box button:hover {
+    background-color: green;
+}
+.membership-card{
+    background: darkgreen;
+    color: white;
+    width: 300px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.home-btn{
+    display: inline-block;
+    background: darkgreen;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+}
+#next2 {
+    background: darkgreen;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+
+#renewBtn {
+    background: white;
+    color: #2e7d32;
+    border: 2px solid #2e7d32;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    width: 100%;
+    margin-top:auto;
+
+}
+footer{
+    background:#145717;
+    color:white;
+    text-align:center;
+    padding:25px;
+    font-size:15px;
+}
+
+
