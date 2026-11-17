@@ -39,6 +39,11 @@ Payment is not included in this version.
 ## Successfull Message after applying
 <img width="1920" height="960" alt="image" src="https://github.com/user-attachments/assets/b2ecdd11-e3e2-49bc-a3f5-74dbc6218de6" />
 
+## Author
+Brian Chival — Software Developer student, Greenview College, 2026
+
+[GitHub](https://github.com/breezy-x2) · [LinkedIn](https://www.linkedin.com/in/brianchival)
+
 
 
 
